@@ -21,7 +21,10 @@ PaletteSelection is comprised of a number of ColorSelection s.
 
 # Services #
 
-* ColorFetcherService is a service which retrieves a random PaletteSelection.
+* ColorFetcherServices are services which retrieves a random PaletteSelection.
+  - ColorApiFetcherService retrieves a PaletteSelection from ColorAPI
+  - ColorsTxtFetcherService picks random elements out of colors.txt
+  - ConditionedTxtFetcherService picks colors one after another to create a PaletteSelection, applying filters one after another.
 * ValidatorServices are any service which wraps a ColorFetcherService with some kind of user validation, meaning someone has to OK the selection before it goes through.
   - XValidatorService posts potential palettes to the screen and validates by way of the Notification api.
   - TermValidatorService posts console output in the candidate colors for validation and requires terminal access to ok.
