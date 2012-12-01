@@ -25,11 +25,13 @@ PaletteSelection is comprised of a number of ColorSelection s.
   - ColorApiFetcherService retrieves a PaletteSelection from ColorAPI
   - ColorsTxtFetcherService picks random elements out of colors.txt
   - ConditionedTxtFetcherService picks colors one after another to create a PaletteSelection, applying filters one after another.
+  - ActivePaletteFetcherService maintains a list of active and in use palettes, is a coordinating agent.
+  - StashedPaletteFetcherService services are created automatically from existing choices.
+  - RandomFetcherService composes a number of ColorFetcherServies and picks one at random, exhausting all picks then issuing a new batch.
 * ValidatorServices are any service which wraps a ColorFetcherService with some kind of user validation, meaning someone has to OK the selection before it goes through.
   - XValidatorService posts potential palettes to the screen and validates by way of the Notification api.
   - TermValidatorService posts console output in the candidate colors for validation and requires terminal access to ok.
   - WebValidatorService is a resident validator for outstanding PaletteSelection s.
   - WebHookValidatorService calls out to a WebService for validation.
-* ActivePaletteService maintains a list of active and in use palettes, is a coordinating agent.
 * TermLaunch is a service which picks a color from the ActivePaletteService and launches a terminal with it.
 
