@@ -121,7 +121,7 @@ function _instance(bus,colors){
 	_nextName(this.bus).then(function(i){
 		_doName(this.bus,NAME_SLASH+i,false)
 	}.bind(this))
-
+	this.bus.on("NameAcquired",_acceptName.bind(this))
 }
 
 function setColor(value){
