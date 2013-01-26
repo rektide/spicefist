@@ -1,4 +1,7 @@
-var dbus= require("dbus-native"),
+var
+  fs= require("fs"),
+  crypto= require("crypto"), 
+  dbus= require("dbus-native"),
   Q= require("q")
 
 var NAME= "/com/voodoowarez/Palette",
@@ -122,14 +125,57 @@ function _instance(bus,colors){
 }
 
 function setColor(value){
+	this.colors= value
 	this.emit("PropertiesChanged", "com.voodoowarez.palette", [["colors",this.colors]], null)
 	this.emit("modified", this.colors)
 }
 
+function Introspect(){
+	return fs.readFileSync("palette.introspect","utf8")
+}
+
+
+function __calculateMachineId(){
+	var sum= crypto.createHash("sha1")
+	shasum.update(os.hostname())
+	shasum.update(os.type())
+	shasum.update(os.platform())
+	shasum.update(os.release())
+	return shasum.digest("base64")
+}
+
+function _identity(){
+	return this
+}
+
+function Ping(){
+	return
+}
+
+function Get(iface, prop){
+	if(iface == IFACE && prop == "colors")
+		return this.colors
+}
+
+function GetAll(iface){
+	if(iface == IFACE){
+		return {"colors":colors}
+	}
+}
+
+function Set(iface, prop, val){
+	if(iface == IFACE && prop == "colors")
+		this.setColor(val)
+}
+
+_instance.prototype.Introspect= Introspect
+_instance.prototype.GetMachineId= _identity.bind(__calculateMachineId())
+_instance.prototype.Ping= Ping
+_instance.prototype.Get= Get
+_instance.prototype.GetAll= GetAll
+_instance.prototype.Set= Set
 _instance.prototype.setColor = setColor
 util.inherits(_instance, events.EventEmitter)
 
 module.exports= _instance
 module.exports.newPalette= _instance
-
-
