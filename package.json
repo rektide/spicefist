@@ -1,0 +1,17 @@
+{
+  "name": "spicefist",
+  "version": "0.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "scm@git.voodoowarez.com:spicefist.git"
+  },
+  "license": "MIT/X",
+  "description": "SpiceFist adds color flare and style to one's otherwise drab desktop.",
+  "dependencies": {
+    "dbus-native": "0.0.8"
+  }
+}

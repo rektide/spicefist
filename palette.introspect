@@ -1,4 +1,5 @@
 <node name="/voodoowarez/palette">
+
 	<interface name="voodoowarez.Palette">
 		<annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
 		<property name="colors" type="ai">
@@ -10,6 +11,17 @@
 			<docstring><![CDATA[
 			New color scheme.]]></docstring>
 		</signal>
+	</interface>
+	<interface name="org.freedesktop.DBus.Introspectable">
+		<method name="Introspect">
+			<arg name="xml_data" direction="out" type="s"/>
+		</method>
+	</interface>
+	<interface name="org.freedesktop.DBus.Peer">
+		<method name="Ping"/>
+		<method name="GetMachineId">
+			<arg type="s" name="machine_uuid" direction="out"/>
+		</method>
 	</interface>
 	<interface name="org.freedesktop.DBus.Properties">
 		<method name="Get">
@@ -25,7 +37,6 @@
 		<method name="GetAll">
 			<arg name="interface_name" type="s" direction="in"/>
 			<arg name="props" type="a{sv}" direction="out"/>
-			<vw:value type="a{sv}">[["colors","ai"]]</vw:value>
 		</method>    
 		<signal name="PropertiesChanged">
 			<arg name="interface_name" type="s"/>
