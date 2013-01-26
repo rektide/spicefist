@@ -1,0 +1,36 @@
+<node name="/voodoowarez/palette">
+	<interface name="voodoowarez.Palette">
+		<annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
+		<property name="colors" type="ai">
+			<docstring><![CDATA[
+			List of colors, RGBA 32-bit.]]></docstring>
+			<annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
+		</property>
+		<signal named="modified" type="ai">
+			<docstring><![CDATA[
+			New color scheme.]]></docstring>
+		</signal>
+	</interface>
+	<interface name="org.freedesktop.DBus.Properties">
+		<method name="Get">
+			<arg name="interface_name" direction="in" type="s"/>
+			<arg name="property_name" direction="in" type="s"/>
+			<arg name="value" direction="out" type="v"/>
+		</method>
+		<method name="Set">
+			<arg name="interface_name" direction="in" type="s"/>
+			<arg name="property_name" direction="in" type="s"/>
+			<arg name="value" direction="in" type="v"/>
+		</method>
+		<method name="GetAll">
+			<arg name="interface_name" type="s" direction="in"/>
+			<arg name="props" type="a{sv}" direction="out"/>
+			<vw:value type="a{sv}">[["colors","ai"]]</vw:value>
+		</method>    
+		<signal name="PropertiesChanged">
+			<arg name="interface_name" type="s"/>
+			<arg name="changed_properties" type="a{sv}"/>
+			<arg name="invalidated_properties" type="as"/>
+		</signal>          
+	</interface>
+</node>
