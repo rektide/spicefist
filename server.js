@@ -14,7 +14,7 @@ var faces= {
 		name: INAME,
 		property: {
 			colors: "ai"
-		}
+		},
 		signals: {
 			modified: ["ai", "colors"]
 		}
@@ -60,8 +60,8 @@ function _instance(bus,colors){
 			BUS= dbus.sessionBus()
 		bus= BUS
 	}
-	this.bus: bus
-	this.colors: colors||[0x888F]
+	this.bus= bus
+	this.colors= colors||[0x888F]
 
 	// take a new name we have acquired and register all services
 	function _acceptName(objName){
@@ -88,7 +88,7 @@ function _instance(bus,colors){
 				return
 			if(ok == 3 || this.now)
 				throw {err:this.now?"queued":"blocked",for:"requestName",name:name}
-		}.bind({name:name,now:now})
+		}.bind({name:name,now:now}))
 	}
 
 	// try to pull a name, then accept it if so.
