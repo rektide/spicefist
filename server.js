@@ -11,7 +11,7 @@ var NAME= "/com/voodoowarez/Palette",
 
 var faces= {
 	palette: {
-		name: INAME
+		name: INAME,
 		property: {
 			colors: "ai"
 		}
