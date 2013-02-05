@@ -1,6 +1,9 @@
 var
-  fs= require("fs"),
   crypto= require("crypto"), 
+  events= require("events"),
+  fs= require("fs"),
+  os= require("os"),
+  util= require("util"),
   dbus= require("dbus-native"),
   Q= require("q")
 
@@ -136,7 +139,7 @@ function Introspect(){
 
 
 function __calculateMachineId(){
-	var sum= crypto.createHash("sha1")
+	var shasum= crypto.createHash("sha1")
 	shasum.update(os.hostname())
 	shasum.update(os.type())
 	shasum.update(os.platform())
