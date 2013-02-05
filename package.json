@@ -12,6 +12,7 @@
   "license": "MIT/X",
   "description": "SpiceFist adds color flare and style to one's otherwise drab desktop.",
   "dependencies": {
-    "dbus-native": "0.0.8"
+    "dbus-native": "0.0.8",
+    "q": ">= 0.8.8 <0.10.x"
   }
 }
